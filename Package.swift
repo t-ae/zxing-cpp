@@ -10,16 +10,21 @@ let package = Package(
     targets: [
         .target(
             name: "CppZXingCpp",
-            path: "core/src",
-            sources: [
-              "."
+            path: "core",
+            exclude: [
+                "ZXVersion.h.in",
+                "Android.mk",
+                "ZXingConfig.cmake.in",
+                "CMakeLists.txt",
             ],
-            publicHeadersPath: ".",
+            sources: [
+                "src",
+            ],
+            publicHeadersPath: "swiftpm",
             cSettings: [
-                .headerSearchPath("."),
+                .headerSearchPath("src"),
             ]
         ),
     ],
     cxxLanguageStandard: .cxx1z
 )
-

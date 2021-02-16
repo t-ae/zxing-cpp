@@ -16,7 +16,7 @@
 * limitations under the License.
 */
 
-#include "TritMatrix.h"
+#include "../TritMatrix.h"
 
 namespace ZXing {
 namespace QRCode {

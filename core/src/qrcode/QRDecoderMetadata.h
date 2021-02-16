@@ -16,7 +16,7 @@
 * limitations under the License.
 */
 
-#include "CustomData.h"
+#include "../CustomData.h"
 
 namespace ZXing {
 namespace QRCode {

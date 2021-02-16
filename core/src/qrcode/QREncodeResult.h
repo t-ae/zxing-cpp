@@ -16,8 +16,8 @@
 * limitations under the License.
 */
 
-#include "BitMatrix.h"
-#include "ByteArray.h"
+#include "../BitMatrix.h"
+#include "../ByteArray.h"
 #include "QRCodecMode.h"
 #include "QRVersion.h"
 

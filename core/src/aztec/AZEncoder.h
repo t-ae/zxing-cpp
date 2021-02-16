@@ -16,7 +16,7 @@
 * limitations under the License.
 */
 
-#include "BitMatrix.h"
+#include "../BitMatrix.h"
 
 #include <string>
 

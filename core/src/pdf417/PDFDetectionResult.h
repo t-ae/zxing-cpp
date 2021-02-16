@@ -19,7 +19,7 @@
 #include "PDFBarcodeMetadata.h"
 #include "PDFBoundingBox.h"
 #include "PDFDetectionResultColumn.h"
-#include "ZXNullable.h"
+#include "../ZXNullable.h"
 #include <vector>
 
 namespace ZXing {

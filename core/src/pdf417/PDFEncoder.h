@@ -15,9 +15,9 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-#include "CharacterSet.h"
+#include "../CharacterSet.h"
 #include "PDFCompaction.h"
-#include "ZXContainerAlgorithms.h"
+#include "../ZXContainerAlgorithms.h"
 
 #include <string>
 #include <vector>

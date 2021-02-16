@@ -16,7 +16,7 @@
 * limitations under the License.
 */
 
-#include "DetectorResult.h"
+#include "../DetectorResult.h"
 
 #include <utility>
 

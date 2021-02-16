@@ -16,8 +16,8 @@
 */
 
 #include "ODRowReader.h"
-#include "Pattern.h"
-#include "Result.h"
+#include "../Pattern.h"
+#include "../Result.h"
 
 #include <array>
 

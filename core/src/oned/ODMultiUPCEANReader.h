@@ -16,8 +16,8 @@
 * limitations under the License.
 */
 
-#include "BarcodeFormat.h"
-#include "DecodeHints.h"
+#include "../BarcodeFormat.h"
+#include "../DecodeHints.h"
 #include "ODRowReader.h"
 
 namespace ZXing {

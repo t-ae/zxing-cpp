@@ -17,7 +17,7 @@
 * limitations under the License.
 */
 
-#include "DecodeHints.h"
+#include "../DecodeHints.h"
 #include "ODRowReader.h"
 
 namespace ZXing {

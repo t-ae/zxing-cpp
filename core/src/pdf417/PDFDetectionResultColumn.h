@@ -18,7 +18,7 @@
 
 #include "PDFBoundingBox.h"
 #include "PDFCodeword.h"
-#include "ZXNullable.h"
+#include "../ZXNullable.h"
 
 #include <vector>
 

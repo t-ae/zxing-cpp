@@ -17,7 +17,7 @@
 */
 
 #include "PDFModulusPoly.h"
-#include "ZXConfig.h"
+#include "../ZXConfig.h"
 
 #include <stdexcept>
 

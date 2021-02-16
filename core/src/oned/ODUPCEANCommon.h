@@ -16,7 +16,7 @@
 * limitations under the License.
 */
 
-#include "GTIN.h"
+#include "../GTIN.h"
 
 #include <array>
 #include <cstddef>

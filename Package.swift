@@ -25,16 +25,16 @@ let package = Package(
                 .headerSearchPath("src"),
             ]
         ),
-        .testTarget(
-            name: "CZXingCppTest",
-            dependencies: ["CppZXingCpp"],
-            path: "test/swiftpm/CZXingCppTest"
-        ),
-        .testTarget(
-            name: "ZXingCppTest",
-            dependencies: ["CZXingCppTest"],
-            path: "test/swiftpm/ZXingCppTest"
-        )
+//        .testTarget(
+//            name: "CZXingCppTest",
+//            dependencies: ["CppZXingCpp"],
+//            path: "test/swiftpm/CZXingCppTest"
+//        ),
+//        .testTarget(
+//            name: "ZXingCppTest",
+//            dependencies: ["CZXingCppTest"],
+//            path: "test/swiftpm/ZXingCppTest"
+//        )
     ],
     cxxLanguageStandard: .cxx1z
 )

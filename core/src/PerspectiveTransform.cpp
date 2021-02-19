@@ -70,9 +70,11 @@ PerspectiveTransform PerspectiveTransform::UnitSquareTo(const QuadrilateralF& q)
 		auto denominator = cross(d1, d2);
 		auto a13 = cross(d3, d2) / denominator;
 		auto a23 = cross(d1, d3) / denominator;
-		return {x1 - x0 + a13 * x1, x3 - x0 + a23 * x3, x0,
-				y1 - y0 + a13 * y1, y3 - y0 + a23 * y3, y0,
-				a13, a23, 1.0f};
+        PerspectiveTransform t{x1 - x0 + a13 * x1, x3 - x0 + a23 * x3, x0,
+            y1 - y0 + a13 * y1, y3 - y0 + a23 * y3, y0,
+            a13, a23, 1.0f};
+        auto aa = (t);
+		return t;
 	}
 }
 
@@ -80,6 +82,9 @@ PerspectiveTransform::PerspectiveTransform(const QuadrilateralF& src, const Quad
 {
 	if (!IsConvex(src) || !IsConvex(dst))
 		return;
+    
+//    auto one = UnitSquareTo(dst);
+//    auto two = UnitSquareTo(src).inverse();
 	*this = UnitSquareTo(dst).times(UnitSquareTo(src).inverse());
 }
 

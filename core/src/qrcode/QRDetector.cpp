@@ -270,7 +270,7 @@ static DetectorResult SampleAtFinderPatternSet(const BitMatrix& image, const Fin
 			return {};
 
 		log(br, 3);
-		quad[2] = quad[2] - PointF(3, 3);
+//		quad[2] = quad[2] - PointF(3, 3);
 
 		// Everything except version 1 (21 modules) has an alignment pattern
 		if (dimension > 21) {
@@ -284,6 +284,10 @@ static DetectorResult SampleAtFinderPatternSet(const BitMatrix& image, const Fin
 						 .value_or(ConcentricPattern{br});
 		}
 	}
+
+    printf("tl: %f, %f, size: %d\n", fp.tl.x, fp.tl.y, fp.tl.size);
+    printf("tr: %f, %f, size: %d\n", fp.tr.x, fp.tr.y, fp.tr.size);
+    printf("bl: %f, %f, size: %d\n", fp.bl.x, fp.bl.y, fp.bl.size);
 
 	return SampleGrid(image, dimension, dimension, {quad, {fp.tl, fp.tr, br, fp.bl}});
 }

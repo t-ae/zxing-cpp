@@ -28,12 +28,42 @@
 
 #include <memory>
 
+#include "../../thirdparty/stb/stb_image_write.h"
+
+static int count = 0;
+static int gh_count = 0;
+
 namespace ZXing {
+
+struct RGBA {
+    unsigned char r, g, b, a; //赤, 緑, 青, 透過
+    RGBA() = default;
+    constexpr RGBA(const unsigned char r_, const unsigned char g_, const unsigned char b_, const unsigned char a_) :r(r_), g(g_), b(b_), a(a_) {}
+};
 
 static Result ReadBarcode(GenericLuminanceSource&& source, const DecodeHints& hints)
 {
 	MultiFormatReader reader(hints);
 	auto srcPtr = std::shared_ptr<LuminanceSource>(&source, [](void*) {});
+    
+    {
+        auto aa = HybridBinarizer(srcPtr);
+        auto w = aa.width();
+        auto h = aa.height();
+        auto bitmap = ToMatrix<RGBA>(*aa.getBlackMatrix(), RGBA(0,0,0,255), RGBA(255,255,255,255));
+        char filePath[256];
+        sprintf(filePath, "/Users/iceman/Desktop/cpp_hb_%d.png", count++);
+        stbi_write_png(filePath, bitmap.width(), bitmap.height(), sizeof(RGBA), bitmap.data(), 0);
+    }
+    {
+        auto gh = GlobalHistogramBinarizer(srcPtr);
+        auto w = gh.width();
+        auto h = gh.height();
+        auto bitmap = ToMatrix<RGBA>(*gh.getBlackMatrix(), RGBA(0,0,0,255), RGBA(255,255,255,255));
+        char filePath[256];
+        sprintf(filePath, "/Users/iceman/Desktop/cpp_gh_%d.png", gh_count++);
+        stbi_write_png(filePath, bitmap.width(), bitmap.height(), sizeof(RGBA), bitmap.data(), 0);
+    }
 
 	if (hints.binarizer() == Binarizer::LocalAverage)
 		return reader.read(HybridBinarizer(srcPtr));

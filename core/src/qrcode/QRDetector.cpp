@@ -203,87 +203,15 @@ static DimensionEstimate EstimateDimension(const BitMatrix& image, PointF a, Poi
 	return {dimension + error, moduleSize, std::abs(error)};
 }
 
-static RegressionLine TraceLine(const BitMatrix& image, PointF p, PointF d, int edge)
-{
-	BitMatrixCursorF cur(image, p, d - p);
-	RegressionLine line;
-	line.setDirectionInward(cur.back());
-
-	cur.stepToEdge(edge);
-	if (edge == 3) {
-		// collect points inside the black line -> go one step back
-		cur.turnBack();
-		cur.step();
-	}
-
-	for (auto dir : {Direction::LEFT, Direction::RIGHT}) {
-		auto c = BitMatrixCursorI(image, PointI(cur.p), PointI(mainDirection(cur.direction(dir))));
-		// if cur.d is near diagonal, it could be c.p is at a corner, i.e. c is not currently at an edge and hence,
-		// stepAlongEdge() would fail. Going either a step forward or backward should do the trick.
-		if (!c.edgeAt(dir)) {
-			c.step();
-			if (!c.edgeAt(dir)) {
-				c.step(-2);
-				if (!c.edgeAt(dir))
-					return {};
-			}
-		}
-
-		auto stepCount = static_cast<int>(maxAbsComponent(cur.p - p));
-		do {
-			line.add(centered(c.p));
-		} while (--stepCount > 0 && c.stepAlongEdge(dir, true));
-	}
-
-	line.evaluate(1.0, true);
-
-	for (auto p : line.points())
-		log(p, 2);
-
-	return line;
-}
-
 static DetectorResult SampleAtFinderPatternSet(const BitMatrix& image, const FinderPatternSet& fp)
 {
 	auto top  = EstimateDimension(image, fp.tl, fp.tr);
 	auto left = EstimateDimension(image, fp.tl, fp.bl);
 	auto best = top.err < left.err ? top : left;
 	int dimension = best.dim;
-	int moduleSize = static_cast<int>(best.ms + 1);
-
-	// generate 4 lines: outer and inner edge of the 1 module wide black line between the two outer and the inner
-	// (tl) finder pattern
-	auto bl2 = TraceLine(image, fp.bl, fp.tl, 2);
-	auto bl3 = TraceLine(image, fp.bl, fp.tl, 3);
-	auto tr2 = TraceLine(image, fp.tr, fp.tl, 2);
-	auto tr3 = TraceLine(image, fp.tr, fp.tl, 3);
-
-	auto quad = Rectangle(dimension, dimension, 3.5);
-	PointF br = fp.tr - fp.tl + fp.bl;
-
-	if (bl2.isValid() && tr2.isValid() && bl3.isValid() && tr3.isValid()) {
-		// intersect both outer and inner line pairs and take the center point between the two intersection points
-		br = (intersect(bl2, tr2) + intersect(bl3, tr3)) / 2;
-
-		// if the estimated alignment pattern position is outside of the image, stop here
-		if (!image.isIn(PointI(br), 3 * moduleSize))
-			return {};
-
-		log(br, 3);
-		quad[2] = quad[2] - PointF(3, 3);
-
-		// Everything except version 1 (21 modules) has an alignment pattern
-		if (dimension > 21) {
-			// in case we landed outside of the central black module of the alignment pattern, use the center
-			// of the next best circle (either outer or inner edge of the white part of the alignment pattern)
-			auto br2 = CenterOfRing(image, PointI(br), moduleSize * 4, 1, false).value_or(br);
-			// if we did not land on a black pixel or the concentric pattern finder fails,
-			// leave the intersection of the lines as the best guess
-			if (image.get(br2))
-				br = LocateConcentricPattern<true>(image, FixedPattern<3, 3>{1, 1, 1}, br2, moduleSize * 3)
-						 .value_or(ConcentricPattern{br});
-		}
-	}
+    
+    auto quad = Rectangle(dimension, dimension, 3.5);
+    PointF br = fp.tr - fp.tl + fp.bl;
 
 	return SampleGrid(image, dimension, dimension, {quad, {fp.tl, fp.tr, br, fp.bl}});
 }

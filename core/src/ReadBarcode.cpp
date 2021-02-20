@@ -52,7 +52,7 @@ static Result ReadBarcode(GenericLuminanceSource&& source, const DecodeHints& hi
         auto h = aa.height();
         auto bitmap = ToMatrix<RGBA>(*aa.getBlackMatrix(), RGBA(0,0,0,255), RGBA(255,255,255,255));
         char filePath[256];
-        sprintf(filePath, "/Users/iceman/Desktop/cpp_hb_%d.png", count++);
+        sprintf(filePath, "/Users/kenta/Desktop/cpp_hb_%d.png", count++);
         stbi_write_png(filePath, bitmap.width(), bitmap.height(), sizeof(RGBA), bitmap.data(), 0);
     }
     {
@@ -61,7 +61,7 @@ static Result ReadBarcode(GenericLuminanceSource&& source, const DecodeHints& hi
         auto h = gh.height();
         auto bitmap = ToMatrix<RGBA>(*gh.getBlackMatrix(), RGBA(0,0,0,255), RGBA(255,255,255,255));
         char filePath[256];
-        sprintf(filePath, "/Users/iceman/Desktop/cpp_gh_%d.png", gh_count++);
+        sprintf(filePath, "/Users/kenta/Desktop/cpp_gh_%d.png", gh_count++);
         stbi_write_png(filePath, bitmap.width(), bitmap.height(), sizeof(RGBA), bitmap.data(), 0);
     }
 

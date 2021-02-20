@@ -76,7 +76,8 @@ DetectorResult SampleGrid(const BitMatrix& image, int width, int height, const P
                     res.set(x, y, RGBA(255,0,0,255));
 
         char filePath[256];
-        sprintf(filePath, "/Users/iceman/Desktop/sampleGrid.png");
+		static int count = 0;
+        sprintf(filePath, "/Users/kenta/Desktop/sampleGrid%d.png", count++);
         stbi_write_png(filePath, res.width(), res.height(), sizeof(RGBA), res.data(), 0);
     }
 

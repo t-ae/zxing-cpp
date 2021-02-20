@@ -61,7 +61,8 @@ Reader::decode(const BinaryBitmap& image) const
     {
         auto bitmap = ToMatrix<RGBA>(detectorResult.bits(), RGBA(0,0,0,255), RGBA(255,255,255,255));
         char filePath[256];
-        sprintf(filePath, "/Users/iceman/Desktop/detectorResult.png");
+		static int count = 0;
+        sprintf(filePath, "/Users/kenta/Desktop/detectorResult%d.png", count++);
         stbi_write_png(filePath, bitmap.width(), bitmap.height(), sizeof(RGBA), bitmap.data(), 0);
     }
 

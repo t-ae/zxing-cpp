@@ -281,300 +281,304 @@ int runBlackBoxTests(const fs::path& testPathPrefix, const std::set<std::string>
 		auto startTime = std::chrono::steady_clock::now();
 
 		// clang-format off
-		runTests("aztec-1", "Aztec", 16, {
-			{ 15, 15, 0   },
-			{ 15, 15, 90  },
-			{ 15, 15, 180 },
-			{ 15, 15, 270 },
-			{ 16, 0, pure },
-		});
+		// runTests("aztec-1", "Aztec", 16, {
+		// 	{ 15, 15, 0   },
+		// 	{ 15, 15, 90  },
+		// 	{ 15, 15, 180 },
+		// 	{ 15, 15, 270 },
+		// 	{ 16, 0, pure },
+		// });
 
-		runTests("aztec-2", "Aztec", 22, {
-			{ 5, 5, 0   },
-			{ 4, 4, 90  },
-			{ 6, 6, 180 },
-			{ 3, 3, 270 },
-		});
+		// runTests("aztec-2", "Aztec", 22, {
+		// 	{ 5, 5, 0   },
+		// 	{ 4, 4, 90  },
+		// 	{ 6, 6, 180 },
+		// 	{ 3, 3, 270 },
+		// });
 
-		runTests("datamatrix-1", "DataMatrix", 22, {
-			{ 22, 22, 0   },
-			{  0, 22, 90  },
-			{  0, 22, 180 },
-			{  0, 22, 270 },
-			{ 21, 0, pure },
-		});
+		// runTests("datamatrix-1", "DataMatrix", 22, {
+		// 	{ 22, 22, 0   },
+		// 	{  0, 22, 90  },
+		// 	{  0, 22, 180 },
+		// 	{  0, 22, 270 },
+		// 	{ 21, 0, pure },
+		// });
 
-		runTests("datamatrix-2", "DataMatrix", 13, {
-			{ 13, 13, 0   },
-			{  0, 13, 90  },
-			{  0, 13, 180 },
-			{  0, 13, 270 },
-		});
+		// runTests("datamatrix-2", "DataMatrix", 13, {
+		// 	{ 13, 13, 0   },
+		// 	{  0, 13, 90  },
+		// 	{  0, 13, 180 },
+		// 	{  0, 13, 270 },
+		// });
 
-		runTests("datamatrix-3", "DataMatrix", 19, {
-			{ 18, 19, 0   },
-			{  0, 19, 90  },
-			{  0, 19, 180 },
-			{  0, 19, 270 },
-		});
+		// runTests("datamatrix-3", "DataMatrix", 19, {
+		// 	{ 18, 19, 0   },
+		// 	{  0, 19, 90  },
+		// 	{  0, 19, 180 },
+		// 	{  0, 19, 270 },
+		// });
 
-		runTests("codabar-1", "Codabar", 11, {
-			{ 11, 11, 0   },
-			{ 11, 11, 180 },
-		});
+		// runTests("codabar-1", "Codabar", 11, {
+		// 	{ 11, 11, 0   },
+		// 	{ 11, 11, 180 },
+		// });
 
-		runTests("codabar-2", "Codabar", 4, {
-			{ 3, 3, 0   },
-			{ 3, 3, 180 },
-		});
+		// runTests("codabar-2", "Codabar", 4, {
+		// 	{ 3, 3, 0   },
+		// 	{ 3, 3, 180 },
+		// });
 
-		runTests("code39-1", "Code39", 4, {
-			{ 4, 4, 0   },
-			{ 4, 4, 180 },
-		});
+		// runTests("code39-1", "Code39", 4, {
+		// 	{ 4, 4, 0   },
+		// 	{ 4, 4, 180 },
+		// });
 
-		runTests("code39-2", "Code39", 2, {
-			{ 2, 2, 0   },
-			{ 2, 2, 180 },
-		}, DecodeHints().setTryCode39ExtendedMode(true));
+		// runTests("code39-2", "Code39", 2, {
+		// 	{ 2, 2, 0   },
+		// 	{ 2, 2, 180 },
+		// }, DecodeHints().setTryCode39ExtendedMode(true));
 
-		runTests("code39-3", "Code39", 12, {
-			{ 12, 12, 0   },
-			{ 12, 12, 180 },
-		});
+		// runTests("code39-3", "Code39", 12, {
+		// 	{ 12, 12, 0   },
+		// 	{ 12, 12, 180 },
+		// });
 
-		runTests("code93-1", "Code93", 3, {
-			{ 3, 3, 0   },
-			{ 3, 3, 180 },
-		});
+		// runTests("code93-1", "Code93", 3, {
+		// 	{ 3, 3, 0   },
+		// 	{ 3, 3, 180 },
+		// });
 
-		runTests("code128-1", "Code128", 6, {
-			{ 6, 6, 0   },
-			{ 6, 6, 180 },
-		});
+		// runTests("code128-1", "Code128", 6, {
+		// 	{ 6, 6, 0   },
+		// 	{ 6, 6, 180 },
+		// });
 
-		runTests("code128-2", "Code128", 21, {
-			{ 19, 21, 0   },
-			{ 19, 21, 180 },
-		});
+		// runTests("code128-2", "Code128", 21, {
+		// 	{ 19, 21, 0   },
+		// 	{ 19, 21, 180 },
+		// });
 
-		runTests("code128-3", "Code128", 2, {
-			{ 2, 2, 0   },
-			{ 2, 2, 180 },
-		});
+		// runTests("code128-3", "Code128", 2, {
+		// 	{ 2, 2, 0   },
+		// 	{ 2, 2, 180 },
+		// });
 
-		runTests("ean8-1", "EAN-8", 8, {
-			{ 8, 8, 0   },
-			{ 8, 8, 180 },
-		});
+		// runTests("ean8-1", "EAN-8", 8, {
+		// 	{ 8, 8, 0   },
+		// 	{ 8, 8, 180 },
+		// });
 
-		runTests("ean13-1", "EAN-13", 31, {
-			{ 26, 29, 0   },
-			{ 23, 29, 180 },
-		});
+		// runTests("ean13-1", "EAN-13", 31, {
+		// 	{ 26, 29, 0   },
+		// 	{ 23, 29, 180 },
+		// });
 
-		runTests("ean13-2", "EAN-13", 24, {
-			{ 7, 13, 0   },
-			{ 7, 13, 180 },
-		});
+		// runTests("ean13-2", "EAN-13", 24, {
+		// 	{ 7, 13, 0   },
+		// 	{ 7, 13, 180 },
+		// });
 
-		runTests("ean13-3", "EAN-13", 21, {
-			{ 20, 21, 0   },
-			{ 21, 21, 180 },
-		});
+		// runTests("ean13-3", "EAN-13", 21, {
+		// 	{ 20, 21, 0   },
+		// 	{ 21, 21, 180 },
+		// });
 
-		runTests("ean13-4", "EAN-13", 22, {
-			{ 7, 14, 0   },
-			{ 8, 14, 180 },
-		});
+		// runTests("ean13-4", "EAN-13", 22, {
+		// 	{ 7, 14, 0   },
+		// 	{ 8, 14, 180 },
+		// });
 
-		runTests("ean13-extension-1", "EAN-13", 5, {
-			{ 4, 5, 0 },
-			{ 3, 5, 180 },
-		}, DecodeHints().setRequireEanAddOnSymbol(true));
+		// runTests("ean13-extension-1", "EAN-13", 5, {
+		// 	{ 4, 5, 0 },
+		// 	{ 3, 5, 180 },
+		// }, DecodeHints().setRequireEanAddOnSymbol(true));
 
-		runTests("itf-1", "ITF", 10, {
-			{ 10, 10, 0   },
-			{ 10, 10, 180 },
-		});
+		// runTests("itf-1", "ITF", 10, {
+		// 	{ 10, 10, 0   },
+		// 	{ 10, 10, 180 },
+		// });
 
-		runTests("itf-2", "ITF", 6, {
-			{ 6, 6, 0   },
-			{ 6, 6, 180 },
-		});
+		// runTests("itf-2", "ITF", 6, {
+		// 	{ 6, 6, 0   },
+		// 	{ 6, 6, 180 },
+		// });
 
-		runTests("maxicode-1", "MaxiCode", 6, {
-			{ 1, 1, 5, 5, 0 },
-		});
+		// runTests("maxicode-1", "MaxiCode", 6, {
+		// 	{ 1, 1, 5, 5, 0 },
+		// });
 
-		runTests("maxicode-2", "MaxiCode", 4, {
-			{ 0, 0, 0 },
-		});
+		// runTests("maxicode-2", "MaxiCode", 4, {
+		// 	{ 0, 0, 0 },
+		// });
 
-		runTests("upca-1", "UPC-A", 12, {
-			{  9, 12, 0, 1, 0   },
-			{ 11, 12, 0, 1, 180 },
-		});
+		// runTests("upca-1", "UPC-A", 12, {
+		// 	{  9, 12, 0, 1, 0   },
+		// 	{ 11, 12, 0, 1, 180 },
+		// });
 
-		runTests("upca-2", "UPC-A", 36, {
-			{ 17, 22, 0   },
-			{ 18, 22, 180 },
-		});
+		// runTests("upca-2", "UPC-A", 36, {
+		// 	{ 17, 22, 0   },
+		// 	{ 18, 22, 180 },
+		// });
 
-		runTests("upca-3", "UPC-A", 21, {
-			{ 7, 10, 0, 1, 0   },
-			{ 8, 10, 0, 1, 180 },
-		});
+		// runTests("upca-3", "UPC-A", 21, {
+		// 	{ 7, 10, 0, 1, 0   },
+		// 	{ 8, 10, 0, 1, 180 },
+		// });
 
-		runTests("upca-4", "UPC-A", 19, {
-			{ 9, 11, 0, 1, 0   },
-			{ 9, 11, 0, 1, 180 },
-		});
+		// runTests("upca-4", "UPC-A", 19, {
+		// 	{ 9, 11, 0, 1, 0   },
+		// 	{ 9, 11, 0, 1, 180 },
+		// });
 
-		runTests("upca-5", "UPC-A", 32, {
-			{ 17, 20, 0   },
-			{ 19, 20, 180 },
-		});
+		// runTests("upca-5", "UPC-A", 32, {
+		// 	{ 17, 20, 0   },
+		// 	{ 19, 20, 180 },
+		// });
 		
-		runTests("upca-extension-1", "UPC-A", 6, {
-			{ 3, 6, 0 },
-			{ 4, 6, 180 },
-		}, DecodeHints().setRequireEanAddOnSymbol(true));
+		// runTests("upca-extension-1", "UPC-A", 6, {
+		// 	{ 3, 6, 0 },
+		// 	{ 4, 6, 180 },
+		// }, DecodeHints().setRequireEanAddOnSymbol(true));
 
-		runTests("upce-1", "UPC-E", 3, {
-			{ 3, 3, 0   },
-			{ 3, 3, 180 },
+		// runTests("upce-1", "UPC-E", 3, {
+		// 	{ 3, 3, 0   },
+		// 	{ 3, 3, 180 },
+		// });
+
+		// runTests("upce-2", "UPC-E", 28, {
+		// 	{ 19, 22, 0, 1, 0   },
+		// 	{ 20, 22, 1, 1, 180 },
+		// });
+
+		// runTests("upce-3", "UPC-E", 11, {
+		// 	{ 6, 8, 0   },
+		// 	{ 6, 8, 180 },
+		// });
+
+		// runTests("rss14-1", "DataBar", 6, {
+		// 	{ 6, 6, 0   },
+		// 	{ 6, 6, 180 },
+		// });
+
+		// runTests("rss14-2", "DataBar", 16, {
+		// 	{ 8 , 10, 0   },
+		// 	{ 10, 10, 180 },
+		// });
+
+		// runTests("rssexpanded-1", "DataBarExpanded", 32, {
+		// 	{ 32, 32, 0   },
+		// 	{ 32, 32, 180 },
+		// });
+
+		// runTests("rssexpanded-2", "DataBarExpanded", 15, {
+		// 	{ 13, 15, 0   },
+		// 	{ 13, 15, 180 },
+		// });
+
+		// runTests("rssexpanded-3", "DataBarExpanded", 117, {
+		// 	{ 117, 117, 0   },
+		// 	{ 117, 117, 180 },
+		// });
+
+		// runTests("rssexpandedstacked-1", "DataBarExpanded", 64, {
+		// 	{ 59, 64, 0   },
+		// 	{ 59, 64, 180 },
+		// });
+
+		// runTests("rssexpandedstacked-2", "DataBarExpanded", 7, {
+		// 	{ 2, 7, 0   },
+		// 	{ 2, 7, 180 },
+		// });
+
+		// runTests("qrcode-1", "QRCode", 16, {
+		// 	{ 16, 16, 0   },
+		// 	{ 16, 16, 90  },
+		// 	{ 16, 16, 180 },
+		// 	{ 16, 16, 270 },
+		// });
+
+		// runTests("qrcode-2", "QRCode", 38, {
+		// 	{ 36, 36, 0   },
+		// 	{ 36, 36, 90  },
+		// 	{ 36, 36, 180 },
+		// 	{ 36, 36, 270 },
+		// 	{ 19, 1, pure }, // the misread is the 'outer' symbol in 16.png
+		// });
+
+		// runTests("qrcode-3", "QRCode", 28, {
+		// 	{ 25, 25, 0   },
+		// 	{ 25, 25, 90  },
+		// 	{ 25, 25, 180 },
+		// 	{ 24, 24, 270 },
+		// });
+
+		// runTests("qrcode-4", "QRCode", 41, {
+		// 	{ 29, 29, 0   },
+		// 	{ 29, 29, 90  },
+		// 	{ 29, 29, 180 },
+		// 	{ 29, 29, 270 },
+		// });
+
+		// runTests("qrcode-5", "QRCode", 16, {
+		// 	{ 16, 16, 0   },
+		// 	{ 16, 16, 90  },
+		// 	{ 16, 16, 180 },
+		// 	{ 16, 16, 270 },
+		// 	{ 4, 0, pure },
+		// });
+
+		// runTests("qrcode-6", "QRCode", 15, {
+		// 	{ 15, 15, 0   },
+		// 	{ 15, 15, 90  },
+		// 	{ 15, 15, 180 },
+		// 	{ 15, 15, 270 },
+		// });
+
+		// runQRCodeStructuredAppendTest("qrcode-7", "QRCode", 1, {
+		// 	{ 1, 1, 0   },
+		// });
+
+		runTests("qrcode-8", "QRCode", 4, {
+			{ 4, 4, 0 },
 		});
 
-		runTests("upce-2", "UPC-E", 28, {
-			{ 19, 22, 0, 1, 0   },
-			{ 20, 22, 1, 1, 180 },
-		});
+		// runTests("pdf417-1", "PDF417", 15, {
+		// 	{ 14, 14, 0   },
+		// 	{ 14, 14, 180 },
+		// 	{ 15, 0, pure },
+		// });
 
-		runTests("upce-3", "UPC-E", 11, {
-			{ 6, 8, 0   },
-			{ 6, 8, 180 },
-		});
+		// runTests("pdf417-2", "PDF417", 25, {
+		// 	{ 25, 25, 0   },
+		// 	{ 25, 25, 180 },
+		// });
 
-		runTests("rss14-1", "DataBar", 6, {
-			{ 6, 6, 0   },
-			{ 6, 6, 180 },
-		});
+		// runTests("pdf417-3", "PDF417", 16, {
+		// 	{ 16, 16, 0   },
+		// 	{ 16, 16, 180 },
+		// 	{ 7, 0, pure },
+		// });
 
-		runTests("rss14-2", "DataBar", 16, {
-			{ 8 , 10, 0   },
-			{ 10, 10, 180 },
-		});
+		// runPdf417StructuredAppendTest("pdf417-4", "PDF417", 2, {
+		// 	{ 2, 2, 0   },
+		// });
 
-		runTests("rssexpanded-1", "DataBarExpanded", 32, {
-			{ 32, 32, 0   },
-			{ 32, 32, 180 },
-		});
+		// runTests("falsepositives-1", "None", 24, {
+		// 	{ 0, 0, 0, 0, 0   },
+		// 	{ 0, 0, 0, 0, 90  },
+		// 	{ 0, 0, 0, 0, 180 },
+		// 	{ 0, 0, 0, 0, 270 },
+		// 	{ 0, 0, pure },
+		// });
 
-		runTests("rssexpanded-2", "DataBarExpanded", 15, {
-			{ 13, 15, 0   },
-			{ 13, 15, 180 },
-		});
-
-		runTests("rssexpanded-3", "DataBarExpanded", 117, {
-			{ 117, 117, 0   },
-			{ 117, 117, 180 },
-		});
-
-		runTests("rssexpandedstacked-1", "DataBarExpanded", 64, {
-			{ 59, 64, 0   },
-			{ 59, 64, 180 },
-		});
-
-		runTests("rssexpandedstacked-2", "DataBarExpanded", 7, {
-			{ 2, 7, 0   },
-			{ 2, 7, 180 },
-		});
-
-		runTests("qrcode-1", "QRCode", 16, {
-			{ 16, 16, 0   },
-			{ 16, 16, 90  },
-			{ 16, 16, 180 },
-			{ 16, 16, 270 },
-		});
-
-		runTests("qrcode-2", "QRCode", 38, {
-			{ 36, 36, 0   },
-			{ 36, 36, 90  },
-			{ 36, 36, 180 },
-			{ 36, 36, 270 },
-			{ 19, 1, pure }, // the misread is the 'outer' symbol in 16.png
-		});
-
-		runTests("qrcode-3", "QRCode", 28, {
-			{ 25, 25, 0   },
-			{ 25, 25, 90  },
-			{ 25, 25, 180 },
-			{ 24, 24, 270 },
-		});
-
-		runTests("qrcode-4", "QRCode", 41, {
-			{ 29, 29, 0   },
-			{ 29, 29, 90  },
-			{ 29, 29, 180 },
-			{ 29, 29, 270 },
-		});
-
-		runTests("qrcode-5", "QRCode", 16, {
-			{ 16, 16, 0   },
-			{ 16, 16, 90  },
-			{ 16, 16, 180 },
-			{ 16, 16, 270 },
-			{ 4, 0, pure },
-		});
-
-		runTests("qrcode-6", "QRCode", 15, {
-			{ 15, 15, 0   },
-			{ 15, 15, 90  },
-			{ 15, 15, 180 },
-			{ 15, 15, 270 },
-		});
-
-		runQRCodeStructuredAppendTest("qrcode-7", "QRCode", 1, {
-			{ 1, 1, 0   },
-		});
-
-		runTests("pdf417-1", "PDF417", 15, {
-			{ 14, 14, 0   },
-			{ 14, 14, 180 },
-			{ 15, 0, pure },
-		});
-
-		runTests("pdf417-2", "PDF417", 25, {
-			{ 25, 25, 0   },
-			{ 25, 25, 180 },
-		});
-
-		runTests("pdf417-3", "PDF417", 16, {
-			{ 16, 16, 0   },
-			{ 16, 16, 180 },
-			{ 7, 0, pure },
-		});
-
-		runPdf417StructuredAppendTest("pdf417-4", "PDF417", 2, {
-			{ 2, 2, 0   },
-		});
-
-		runTests("falsepositives-1", "None", 24, {
-			{ 0, 0, 0, 0, 0   },
-			{ 0, 0, 0, 0, 90  },
-			{ 0, 0, 0, 0, 180 },
-			{ 0, 0, 0, 0, 270 },
-			{ 0, 0, pure },
-		});
-
-		runTests("falsepositives-2", "None", 25, {
-			{ 0, 0, 0, 0, 0   },
-			{ 0, 0, 0, 0, 90  },
-			{ 0, 0, 0, 0, 180 },
-			{ 0, 0, 0, 0, 270 },
-			{ 0, 0, pure },
-		});
+		// runTests("falsepositives-2", "None", 25, {
+		// 	{ 0, 0, 0, 0, 0   },
+		// 	{ 0, 0, 0, 0, 90  },
+		// 	{ 0, 0, 0, 0, 180 },
+		// 	{ 0, 0, 0, 0, 270 },
+		// 	{ 0, 0, pure },
+		// });
 		// clang-format on
 
 		int totalTime = timeSince(startTime);

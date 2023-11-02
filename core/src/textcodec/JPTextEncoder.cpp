@@ -36,6 +36,7 @@
 // and the grateful thanks of the Qt team.
 
 #include "JPTextEncoder.h"
+#include <cstdint>
 
 /*
 * This data is derived from Unicode 1.1,
